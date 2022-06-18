@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-3 sidebar">
+      <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModal">
+        ジャンルを追加
+      </button>
+    </div>
+    <div class="col-9 sidebar genres">
+      <%= render 'genres', genres: @genres %>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ジャンルを追加</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_with model:@genre, remote: true do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.label :name, "ジャンル名" %>
+            <%= f.text_field :name, class:"form-control" %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+          <%= f.submit "追加する", class:"btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
