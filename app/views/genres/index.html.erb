@@ -19,7 +19,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <%= form_with model:@genre, remote: true do |f| %>
+      <%= form_with model:@genre, local: false do |f| %>
         <div class="modal-body">
           <div class="form-group">
             <%= f.label :name, "ジャンル名" %>

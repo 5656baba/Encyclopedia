@@ -1,7 +1,10 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-3 sidebar">
-      <table class="table table-bordered genre-search">
+      <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModal">
+        疑問を追加
+      </button>
+      <table class="table table-bordered genre-search mt-5">
         <thead>
           <tr>
             <td>ジャンル検索</td>
@@ -16,13 +19,32 @@
         </tbody>
       </table>
     </div>
-    <div class="col-9 pl-5 pr-5" >
-      <h1 class="text-center text-info my-4">To do リスト</h1>
-      <form id="form" class="mb-4">
-        <input type="text" id="input" class="form-control" placeholder="TODOを入力" autocomplete="off" />
-      </form>
-      <ul class="list-group text-secondary" id="ul"></ul>
+    <div class="col-9 sidebar questions">
+      <%= render 'questions/questions', questions: @questions %>
     </div>
-    <script src="top.js"></script>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">疑問を追加</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_with model:@question, url: questions_path do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.label :title, "疑問点・調べること" %>
+            <%= f.text_field :title, class:"form-control" %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+          <%= f.submit "追加する", class:"btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
