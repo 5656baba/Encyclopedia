@@ -5,8 +5,8 @@
         要約を追加
       </button>
     </div>
-    <div class="col-9 sidebar genres">
-      <%= render 'genres', genres: @genres %>
+    <div class="col-9 sidebar summaries">
+      <%= render 'summaries', summaries: @summaries %>
     </div>
   </div>
 </div>
@@ -19,11 +19,20 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <%= form_with model:@genre, local: false do |f| %>
+      <%= form_with model:@summary, local: false do |f| %>
         <div class="modal-body">
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--"%>
           <div class="form-group">
-            <%= f.label :name, "ジャンル名" %>
-            <%= f.text_field :name, class:"form-control" %>
+            <%= f.label :title, "タイトル" %>
+            <%= f.text_field :title, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :sentence, "文章" %>
+            <%= f.text_area :sentence, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :url, "参考文献(URL)" %>
+            <%= f.text_field :url, class:"form-control" %>
           </div>
         </div>
         <div class="modal-footer">

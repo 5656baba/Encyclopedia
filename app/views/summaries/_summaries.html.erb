@@ -1,0 +1,11 @@
+<h1 class="text-center text-info my-4">要約一覧</h1>
+<% summaries.each do |summary| %>
+  <div class="card mb-1">
+    <div class="card-body">
+      <p class="card-text">
+        <%= link_to summary.title, summary_path(summary.id) %></br>
+        <%= link_to summary.sentence.truncate(50).delete '#,`,*,\,', summary_path(summary.id) %>
+      </p>
+    </div>
+  </div>
+<% end %>
