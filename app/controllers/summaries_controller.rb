@@ -1,18 +1,27 @@
 class SummariesController < ApplicationController
   def index
-    @summaries = Summary.all
+    @genres = Genre.all
     @summary = Summary.new
+    @summaries = Summary.where(genre_id: params[:genre_id]).page(params[:page]).per(8)  #genreで検索した時
+    if @summaries.empty?
+      @summaries = Summary.all.page(params[:page]).per(8)
+    else
+      @genre = Genre.find(params[:genre_id])
+    end
   end
 
   def show
     @summary = Summary.find(params[:id])
+    @genres=Genre.all
   end
 
   def edit
     @summary = Summary.find(params[:id])
+    @genres=Genre.all
   end
 
   def update
+    @genres=Genre.all
     @summary = Summary.find(params[:id])
     @summary.update(summary_params)
   end
@@ -22,10 +31,18 @@ class SummariesController < ApplicationController
     @summaries = Summary.all
   end
 
-   def destroy
+  def destroy
     @summary = Summary.find(params[:id])
     @summary.destroy
     redirect_to summaries_path
+  end
+
+  def search
+    @genres=Genre.all
+    params[:keyword] # 商品名で検索した場合
+    @summaries = Summary.search(params[:keyword]).page(params[:page])
+    @keyword = params[:keyword]
+    render "index"
   end
 
 

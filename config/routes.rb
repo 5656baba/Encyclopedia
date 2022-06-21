@@ -3,5 +3,9 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   resources :genres
   resources :questions
-  resources :summaries
+  resources :summaries do
+    collection do
+      get "search"
+    end
+  end
 end
