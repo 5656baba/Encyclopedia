@@ -2,18 +2,18 @@
   <div class="row">
     <div class="col-3 sidebar">
       <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModal">
-        疑問を追加
+        気になることを追加
       </button>
       <table class="table table-bordered genre-search mt-5">
-        <thead>
+        <thead class="table-dark">
           <tr>
-            <td>ジャンル検索</td>
+            <td>投稿一覧</td>
           </tr>
         </thead>
         <tbody>
-          <% @genres.each do |genre| %>
+          <% @summaries.each do |summary| %>
           <tr>
-            <th><%= genre.name %><%# link_to genre.name, items_path(genre_id: genre.id) %></th>
+            <th><%= link_to summary.title, summary_path(summary.id) %></th>
           </tr>
           <% end %>
         </tbody>

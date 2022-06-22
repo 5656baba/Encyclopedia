@@ -4,6 +4,20 @@
       <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModal">
         ジャンルを追加
       </button>
+      <table class="table table-bordered genre-search mt-5">
+        <thead class="table-dark">
+          <tr>
+            <td>気になることリスト</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @questions.each do |question| %>
+          <tr>
+            <th><%= question.title %></th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
     <div class="col-9 sidebar genres">
       <%= render 'genres', genres: @genres %>

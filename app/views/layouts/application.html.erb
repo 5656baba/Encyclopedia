@@ -16,22 +16,22 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="search-form">
-          <%# form_with url: search_path, method: :get, local: true do |f| %>
-            <%# f.text_field :keywords, class: "search_form", placeholder: "材料で検索", class: "rounded a", size: "40x50"%>
-            <%# f.submit '検索', class: "rounded btn btn-primary" %>
-          <%# end %>
+        <div class="search-form ml-5 text-nowrap">
+          <%= form_with url: search_summaries_path, method: :get, local: true do |f| %>
+            <%= f.text_field :keywords, class: "search_form", placeholder: "キーワードを入力", class: "rounded", size: "40x50"%>
+            <%= f.submit '検索', class: "rounded btn-sm btn-primary" %>
+          <% end %>
         </div>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
           　<li class="nav-item mr-5">
               <%= link_to "疑問を追加", root_path %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mr-5">
               <%= link_to "ジャンルを追加", genres_path %>
             </li>
             <li class="nav-item">
-              <%= link_to "新規投稿・投稿一覧", summariess_path %>
+              <%= link_to "新規投稿・投稿一覧", summaries_path %>
             </li>
           </ul>
         </div>

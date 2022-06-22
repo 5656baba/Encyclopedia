@@ -2,15 +2,16 @@ class SummariesController < ApplicationController
   def index
     @genres = Genre.all
     @summary = Summary.new
-    @summaries = Summary.where(genre_id: params[:genre_id]).page(params[:page]).per(8)  #genreで検索した時
+    @summaries = Summary.where(genre_id: params[:genre_id])  #genreで検索した時
     if @summaries.empty?
-      @summaries = Summary.all.page(params[:page]).per(8)
+      @summaries = Summary.all
     else
       @genre = Genre.find(params[:genre_id])
     end
   end
 
   def show
+    @summaries = Summary.select(:id, :title)
     @summary = Summary.find(params[:id])
     @genres=Genre.all
   end
@@ -39,8 +40,8 @@ class SummariesController < ApplicationController
 
   def search
     @genres=Genre.all
-    params[:keyword] # 商品名で検索した場合
-    @summaries = Summary.search(params[:keyword]).page(params[:page])
+    params[:keyword]
+    @summaries = Summary.search(params[:keyword])
     @keyword = params[:keyword]
     render "index"
   end

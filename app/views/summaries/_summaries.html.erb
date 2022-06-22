@@ -3,8 +3,10 @@
   <div class="card mb-1">
     <div class="card-body">
       <p class="card-text">
-        <%= link_to summary.title, summary_path(summary.id) %></br>
-        <%= link_to summary.sentence.truncate(50).delete '#,`,*,\,', summary_path(summary.id) %>
+        <%= link_to summary_path(summary.id) do %>
+          <%= summary.title %></br>
+          <%= summary.sentence.truncate(50).delete '#,`,*,\,' %>
+        <% end %>
       </p>
     </div>
   </div>

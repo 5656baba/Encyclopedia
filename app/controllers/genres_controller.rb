@@ -1,5 +1,6 @@
 class GenresController < ApplicationController
   def index
+    @questions = Question.select(:title)
     @genres = Genre.all
     @genre = Genre.new
   end

@@ -4,6 +4,20 @@
       <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModal">
         要約を追加
       </button>
+      <table class="table table-bordered genre-search mt-5">
+        <thead class="table-dark">
+          <tr>
+            <td>ジャンル検索</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+          <tr>
+            <th><%= link_to genre.name, summaries_path(genre_id: genre.id) %></th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
     <div class="col-9 sidebar summaries">
       <%= render 'summaries', summaries: @summaries %>
@@ -21,7 +35,7 @@
       </div>
       <%= form_with model:@summary, local: false do |f| %>
         <div class="modal-body">
-          <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--"%>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--ジャンルを選択--"%>
           <div class="form-group">
             <%= f.label :title, "タイトル" %>
             <%= f.text_field :title, class:"form-control" %>
