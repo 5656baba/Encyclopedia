@@ -30,6 +30,9 @@
           <p class="card-text">
             <%= auto_link(simple_format(@summary.url)) %>
           </p>
+          <span class="edit-button">
+            <%= link_to "編集する", edit_summary_path(@summary.id), class: "btn btn-primary" %>
+          </span>
         </div>
       </div>
     </div>

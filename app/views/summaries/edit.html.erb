@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_with model: @summary, url: summary_path, local:true do |f| %>
+        <div class="card mb-1">
+          <div class="card-body">
+            <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %>
+            <div class="form-group">
+              <%= f.label :title, "タイトル" %>
+              <%= f.text_field :title, class:"form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :sentence, "文章" %>
+              <%= f.text_area :sentence, class:"form-control", rows: 15 %>
+            </div>
+            <div class="form-group">
+              <%= f.label :url, "参考文献(URL)" %>
+              <%= f.text_area :url, class:"form-control" %>
+            </div>
+          </div>
+          <span><%= f.submit "更新", class:"btn btn-success" %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -25,6 +25,7 @@ class SummariesController < ApplicationController
     @genres=Genre.all
     @summary = Summary.find(params[:id])
     @summary.update(summary_params)
+    redirect_to summary_path(@summary.id)
   end
 
   def create
@@ -39,10 +40,10 @@ class SummariesController < ApplicationController
   end
 
   def search
-    @genres=Genre.all
-    params[:keyword]
-    @summaries = Summary.search(params[:keyword])
-    @keyword = params[:keyword]
+    @genres = Genre.all
+    params[:keywords]
+    @summaries = Summary.search(params[:keywords])
+    @keyword = params[:keywords]
     render "index"
   end
 

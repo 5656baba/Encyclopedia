@@ -1,8 +1,10 @@
 <h1 class="text-center text-info my-4">要約一覧</h1>
+<% count = 0 %>
 <% summaries.each do |summary| %>
   <div class="card mb-1">
     <div class="card-body">
       <p class="card-text">
+        <% count += 1 %>
         <%= link_to summary_path(summary.id) do %>
           <%= summary.title %></br>
           <%= summary.sentence.truncate(50).delete '#,`,*,\,' %>
@@ -10,4 +12,11 @@
       </p>
     </div>
   </div>
+<% end %>
+<% if count == 0 %>
+<div class="card-body">
+  <p class="card-text search-results">
+    検索結果がありませんでした
+  </p>
+</div>
 <% end %>
