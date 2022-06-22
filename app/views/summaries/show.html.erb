@@ -27,11 +27,16 @@
             <small><%= simple_format @summary.sentence %></small>
           </p>
           <p>参考文献のURL</p>
-          <p class="card-text">
-            <%= auto_link(simple_format(@summary.url)) %>
-          </p>
+          <% if @summary.url == "" %>
+            <p>Blank</p>
+          <% else %>
+            <p class="card-text">
+              <%= auto_link(simple_format(@summary.url)) %>
+            </p>
+          <% end %>
           <span class="edit-button">
             <%= link_to "編集する", edit_summary_path(@summary.id), class: "btn btn-primary" %>
+            <%= link_to "削除する", summary_path(@summary.id), method: :delete, class: "btn btn-danger ml-5", data: { confirm: "本当に削除しますか？" } %>
           </span>
         </div>
       </div>
