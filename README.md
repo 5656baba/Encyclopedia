@@ -1,24 +1,30 @@
-# README
+# Encyclopedia
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+余った食材を入力することで、その食材を使って作ることができる料理のレシピを表示してくれます。
+日常生活の中で気になったことをメモして後から調べたり、学習したことをアウトプットしたりすることができます。
+また、検索機能により、アウトプットしたことを後から見返すことも可能です。
 
-Things you may want to cover:
+### サイトテーマ
+気になったことのメモ、学習したことをアウトプットするまとめサイト
 
-* Ruby version
+### 開発に至った背景
+私は読書、ゲーム、スポーツ、釣り、キャンプ、ネットサーフィンなど、多趣味なため、
+気になったこと、分からなかったことを後から調べることがよくあります。
+この際に、気になったことをメモしたり、調べて学んだことをアウトプットしたり、まとめた内容を
+後から見直したりできる環境が欲しいと思ったため、このサイトを作ることにしました。
 
-* System dependencies
 
-* Configuration
+### 今後の改善点
+・デザインをbootstrapメインからcssメインに置き換える
+・レスポンシブ対応させる
+・ログイン機能を実装して他人にも使えるようにし、バリデーションも追加する
+・編集機能を非同期処理に変更する
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Amazon Linux release 2 (Karoo)
+- 言語：HTML,CSS,JavaScript,Ruby
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
